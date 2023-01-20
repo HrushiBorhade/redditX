@@ -1,6 +1,6 @@
 
 export default function Home() {
   return (
-    <div>Heyy there!</div>
+    <div>Reddit Home Page</div>
   )
 }
