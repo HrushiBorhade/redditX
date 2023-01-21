@@ -9,8 +9,9 @@ const Navbar:React.FC = () => {
   return (
     <Flex bg="white" height="50px" padding="6px 18px" align="center">
       <Flex align="center">
-        <Image src='/images/redditFace.svg' height="32px"/>
+        <Image alt="reddit face logo"src='/images/redditFace.svg' height="32px"/>
         <Image 
+          alt="reddit text logo"
           src='/images/redditText.svg'
           height="50px" 
           display={{base:"none" ,md:"unset"}}/>
