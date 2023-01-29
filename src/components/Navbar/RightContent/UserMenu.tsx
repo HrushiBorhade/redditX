@@ -8,14 +8,22 @@ import {VscAccount} from 'react-icons/vsc'
 import {CgProfile} from 'react-icons/cg'
 import {MdOutlineLogin} from 'react-icons/md'
 import { auth } from '@/firebase/clientApp';
-import { useSetRecoilState } from 'recoil';
+import { useResetRecoilState, useSetRecoilState } from 'recoil';
 import { AuthModalState } from '@/atoms/authModalAtom';
+import { communityState } from '@/atoms/communitiesAtom';
 type UserMenuProps = {
   user:User
 };
 
 const UserMenu:React.FC<UserMenuProps> = ({user} ) => {
+  const resetCommunityState = useResetRecoilState(communityState)
   const setAuthModalState = useSetRecoilState(AuthModalState)
+
+  const logout = async () => {
+    await signOut(auth)
+    resetCommunityState()
+  } 
+  
   return (
     <Menu>
        <MenuButton
@@ -63,7 +71,7 @@ const UserMenu:React.FC<UserMenuProps> = ({user} ) => {
             <MenuItem
               fontSize="10pt"
               fontWeight={700}
-              _hover={{ bg: "brand.100", color: "white" }}
+              _hover={{ bg: "gray.100" }}
             >
               <Flex alignItems="center">
                 <Icon fontSize={20} mr={2} as={CgProfile} />
@@ -74,8 +82,8 @@ const UserMenu:React.FC<UserMenuProps> = ({user} ) => {
             <MenuItem
               fontSize="10pt"
               fontWeight={700}
-              _hover={{ bg: "brand.100", color: "white" }}
-              onClick={()=> signOut(auth)}
+              _hover={{ bg: "gray.100" }}
+              onClick={logout}
             >
               <Flex alignItems="center">
                 <Icon fontSize={20} mr={2} as={MdOutlineLogin} />
@@ -83,12 +91,12 @@ const UserMenu:React.FC<UserMenuProps> = ({user} ) => {
               </Flex>
             </MenuItem>
           </>
-        : 
+        :  
           <>
              <MenuItem
               fontSize="10pt"
               fontWeight={700}
-              _hover={{ bg: "brand.100", color: "white" }}
+              _hover={{ bg: "blue.400", color: "white" }}
               onClick={()=> setAuthModalState({open:true , view:"login"})}
             >
               <Flex alignItems="center">

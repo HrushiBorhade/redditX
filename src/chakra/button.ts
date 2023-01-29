@@ -19,31 +19,51 @@ export const Button: ComponentStyleConfig =  {
     }
   },
   variants: {
-    solid:{
-      bg:"#FF3c00",
-      color:"white",
-      border:"1px solid",
-      borderColor:"#FF3c00",
-      _hover:{
-        color:"#FF3c00",
-        bg:"white",
-      }
-    },
-    blue:{
+    // solid:{
+    //   bg:"#FF3c00",
+    //   color:"white",
+    //   border:"1px solid",
+    //   borderColor:"#FF3c00",
+    //   _hover:{
+    //     color:"#FF3c00",
+    //     bg:"white",
+    //   }
+    // },
+    // blue:{
+    //   color: "white",
+    //   bg: "blue.500",
+    //   _hover: {
+    //     bg: "blue.400",
+    //   },
+    // },
+    // outline:{
+    //   color:"#FF3c00",
+    //   border:"1px solid",
+    //   borderColor:"#FF3c00",
+    //   _hover:{
+    //    bg:"#FF3c00",
+    //    color:"white"
+    //   }
+    // },
+    // oauth: {
+    //   height: "34px",
+    //   border: "1px solid",
+    //   borderColor: "gray.300",
+    //   _hover: {
+    //     bg: "gray.50",
+    //   },
+    // },
+    solid: {
       color: "white",
       bg: "blue.500",
       _hover: {
         bg: "blue.400",
       },
     },
-    outline:{
-      color:"#FF3c00",
-      border:"1px solid",
-      borderColor:"#FF3c00",
-      _hover:{
-       bg:"#FF3c00",
-       color:"white"
-      }
+    outline: {
+      color: "blue.500",
+      border: "1px solid",
+      borderColor: "blue.500",
     },
     oauth: {
       height: "34px",
