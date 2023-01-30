@@ -3,6 +3,7 @@ import CommunityNotFound from '@/components/Community/CommunityNotFound';
 import CreatePostLink from '@/components/Community/CreatePostLink';
 import Header from '@/components/Community/Header';
 import PageContent from '@/components/Layout/PageContent';
+import Posts from '@/components/Posts/Posts';
 import { firestore } from '@/firebase/clientApp';
 import { Flex } from '@chakra-ui/react';
 import { doc } from '@firebase/firestore';
@@ -23,10 +24,12 @@ const CommunityPage:React.FC<CommunityPageProps> = ({communityData}) => {
     <>
     <Header communityData={communityData}/>
     <PageContent>
-      <><CreatePostLink/></>
+      <>
+        <CreatePostLink/>
+        <Posts communityData={communityData}/>
+      </>
       <><div>RHS</div></>
-    </PageContent>
-    
+    </PageContent> 
     </>
   )
 }
