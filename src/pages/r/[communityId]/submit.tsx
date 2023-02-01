@@ -9,6 +9,8 @@ import { useRecoilValue } from 'recoil';
 
 const SubmitPostPage:React.FC= () => {
   const [user, loadingUser, error] = useAuthState(auth);
+  const communityStateValue  = useRecoilValue(communityState)
+  console.log("Community", communityStateValue);
   return (
     <PageContent>
       <>

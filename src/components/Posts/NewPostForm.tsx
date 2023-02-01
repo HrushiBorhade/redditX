@@ -34,6 +34,7 @@ import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import TextInputs from "./PostForm/TextInputs";
 import ImageUpload from "./PostForm/ImageUpload";
 import { useAuthState } from "react-firebase-hooks/auth";
+import useSelectFile from "@/hooks/useSelectFile";
 
 const formTabs = [
   {
@@ -73,7 +74,8 @@ const NewPostForm: React.FC<NewPostFormProps> = ({user}) => {
     title: "",
     body: "",
   });
-  const [selectedFile, setSelectedFile] = useState<string>();
+  // const [selectedFile, setSelectedFile] = useState<string>();
+  const {selectedFile,setSelectedFile,onSelectFile} = useSelectFile()
   const selectFileRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -175,7 +177,7 @@ const NewPostForm: React.FC<NewPostFormProps> = ({user}) => {
             setSelectedFile={setSelectedFile}
             setSelectedTab={setSelectedTab}
             selectFileRef={selectFileRef}
-            onSelectImage={onSelectImage}
+            onSelectImage={onSelectFile}
           />
         )}
       </Flex>

@@ -1,4 +1,5 @@
-import { Community } from '@/atoms/communitiesAtom';
+import { Community, communityState } from '@/atoms/communitiesAtom';
+import About from '@/components/Community/About';
 import CommunityNotFound from '@/components/Community/CommunityNotFound';
 import CreatePostLink from '@/components/Community/CreatePostLink';
 import Header from '@/components/Community/Header';
@@ -9,7 +10,8 @@ import { Flex } from '@chakra-ui/react';
 import { doc } from '@firebase/firestore';
 import { getDoc } from 'firebase/firestore';
 import { GetServerSidePropsContext } from 'next';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import safeJsonStringify from "safe-json-stringify"
 
 type CommunityPageProps = {
@@ -17,9 +19,17 @@ type CommunityPageProps = {
  };
 
 const CommunityPage:React.FC<CommunityPageProps> = ({communityData}) => {
+  const setCommunityStateValue= useSetRecoilState(communityState)
+  useEffect(() => {
+    setCommunityStateValue((prev)=>({
+      ...prev,
+      currentCommunity:communityData
+    }))
+  } , [])
   if(!communityData){
     return <CommunityNotFound/>
   }
+
   return (
     <>
     <Header communityData={communityData}/>
@@ -28,7 +38,7 @@ const CommunityPage:React.FC<CommunityPageProps> = ({communityData}) => {
         <CreatePostLink/>
         <Posts communityData={communityData}/>
       </>
-      <><div>RHS</div></>
+      <><About communityData={communityData}/></>
     </PageContent> 
     </>
   )

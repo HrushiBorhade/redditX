@@ -32,7 +32,7 @@ const SearchInput:React.FC<SearchInputProps> = ({user}) => {
           }}
           bg="gray.50"
           height="34px"
-          borderRadius="15px"
+          // borderRadius="15px"
         />
       </InputGroup>
 
