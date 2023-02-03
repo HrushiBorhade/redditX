@@ -1,3 +1,4 @@
+import Comments from "@/components/Posts/Comments/Comments";
 import { User } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
@@ -56,11 +57,11 @@ const PostPage: React.FC = () => {
             userIsCreator={user?.uid === postStateValue.selectedPost?.creatorId}
           />
         )}
-        {/* <Comments
+        <Comments
           user={user as User}
           selectedPost={postStateValue.selectedPost}
           communityId={postStateValue.selectedPost?.communityId as string}
-        /> */}
+        />
       </>
       <>
         {communityStateValue.currentCommunity && (
